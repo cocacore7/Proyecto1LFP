@@ -1,0 +1,20 @@
+(
+    <
+        [Nombre] = "Pepian",
+        [Costo] = 55.50,
+        [Orden] = 1,
+        [Estado] = True
+    >,
+    <
+        [Nombre] = "Caldo de Res",
+        [Costo] = 60,
+        [Orden] = 2,
+        [Estado] = False
+    >,
+    <
+        [Nombre] = "Tamal De Arroz",
+        [Costo] = 23.50,
+        [Orden] = 3,
+        [Estado] = True
+    >
+)

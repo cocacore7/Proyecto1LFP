@@ -1,0 +1,17 @@
+(
+    <
+        [Nombre] = "Girasol",
+        [Disponible] = True,
+        [Color] = "Amarrillo"
+    >,
+    <
+        [Nombre] = "Rosas",
+        [Disponible] = False,
+        [Color] = "Varios"
+    >,
+    <
+        [Nombre] = "Hortensias",
+        [Disponible] = True,
+        [Color] = "Lila"
+    >
+)

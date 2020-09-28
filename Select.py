@@ -1,3 +1,8 @@
+import LogicoI
+import LogicoO
+import LogicoX
+
+
 def select(cadena, memoriaActual, estrucActual):
     estado = 0
     signo = 1
@@ -99,739 +104,25 @@ def select(cadena, memoriaActual, estrucActual):
     if auxiliar[0] == "*":
         if bandera:
             if logicoI:
-                if signo1 == "=":
-                    contador = 0
-                    for i in range(0, len(memoriaActual)):
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                if signo2 == "=":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        datos = posdata - posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] == comparar2:
-                                                datos = posdata - posestruc
-                                                for y in range(0, len(estrucActual)):
-                                                    print(memoriaActual[datos])
-                                                    datos = datos + 1
-                                elif signo2 == "<":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        datos = posdata - posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] == comparar2:
-                                                datos = posdata - posestruc
-                                                for y in range(0, len(estrucActual)):
-                                                    print(memoriaActual[datos])
-                                                    datos = datos + 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                if signo2 == "=":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        datos = posdata - posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] == comparar2:
-                                                for y in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = datos + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] == comparar2:
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                            else:
-                                                datos = datos + 1
-                            contador = contador + 1
-
-                elif signo1 == "<":
-                    contador = 0
-                    for i in range(0, len(memoriaActual)):
-                        suma1 = 0
-                        suma2 = 0
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) < float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 < suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) < float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 < suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                            contador = contador + 1
-
-                elif signo1 == ">":
-                    contador = 0
-                    suma1 = 0
-                    suma2 = 0
-                    for i in range(0, len(memoriaActual)):
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "False" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) > float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 > suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "False" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) > float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 > suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                            contador = contador + 1
-
-                elif signo1 == "<=":
-                    contador = 0
-                    suma1 = 0
-                    suma2 = 0
-                    for i in range(0, len(memoriaActual)):
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) <= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 <= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "False" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) <= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 <= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                            contador = contador + 1
-
-                elif signo1 == ">=":
-                    contador = 0
-                    suma1 = 0
-                    suma2 = 0
-                    for i in range(0, len(memoriaActual)):
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) >= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 >= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    print("")
-                                else:
-                                    num = numero(memoriaActual[i])
-                                    if num:
-                                        if float(memoriaActual[i]) >= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                    else:
-                                        for a in memoriaActual[i]:
-                                            suma1 = suma1 + ord(a)
-                                        for a in comparar1:
-                                            suma2 = suma2 + ord(a)
-                                        if suma1 >= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                            contador = contador + 1
-
-                elif signo1 == "!=":
-                    contador = 0
-                    for i in range(0, len(memoriaActual)):
-                        if contador == len(estrucActual) - 1:
-                            if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                if signo2 == "=":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        datos = posdata - posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] != comparar2:
-                                                datos = posdata - posestruc
-                                                for y in range(0, len(estrucActual)):
-                                                    print(memoriaActual[datos])
-                                                    datos = datos + 1
-                            contador = 0
-                        else:
-                            if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                if signo2 == "=":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        datos = posdata - posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] != comparar2:
-                                                for y in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = datos + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        for z in range(0, len(estrucActual)):
-                                            if estrucActual[z] == condicion2 and memoriaActual[datos] != comparar2:
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
-                                            else:
-                                                datos = datos + 1
-                            contador = contador + 1
-                else:
-                    print("Signo de consulta erroneo")
+                LogicoI.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                               estrucActual)
             elif logicoO:
-                print(logicoO)
+                LogicoO.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                               estrucActual)
             elif logicoX:
-                print(logicoX)
+                LogicoX.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                               estrucActual)
             else:
                 if signo1 == "=":
                     contador = 0
                     for i in range(0, len(memoriaActual)):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                posestruc = i
-                                posdata = i
-                                while posestruc >= len(estrucActual):
-                                    posestruc = posestruc - len(estrucActual)
-                                if posestruc == len(estrucActual)-1:
-                                    for z in range(0, len(estrucActual)):
-                                        print(memoriaActual[posdata])
-                                        posdata = posdata - 1
+                                imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                posestruc = i
-                                posdata = i
-                                while posestruc >= len(estrucActual):
-                                    posestruc = posestruc - len(estrucActual)
-                                if posestruc == 0:
-                                    for z in range(0, len(estrucActual)):
-                                        print(memoriaActual[posdata])
-                                        posdata = posdata + 1
-                                else:
-                                    datos = posdata - posestruc
-                                    izq = 0
-                                    der = posestruc
-                                    while izq < posestruc:
-                                        print(memoriaActual[datos])
-                                        izq = izq + 1
-                                        datos = datos + 1
-                                    while der < len(estrucActual):
-                                        print(memoriaActual[datos])
-                                        der = der + 1
-                                        datos = datos + 1
+                                imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
 
                 elif signo1 == "<":
@@ -842,14 +133,7 @@ def select(cadena, memoriaActual, estrucActual):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -860,52 +144,19 @@ def select(cadena, memoriaActual, estrucActual):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) < float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 < suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -916,52 +167,14 @@ def select(cadena, memoriaActual, estrucActual):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) < float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 < suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
 
                 elif signo1 == ">":
@@ -972,14 +185,7 @@ def select(cadena, memoriaActual, estrucActual):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -990,52 +196,19 @@ def select(cadena, memoriaActual, estrucActual):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) > float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 > suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -1046,52 +219,14 @@ def select(cadena, memoriaActual, estrucActual):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) > float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 > suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
 
                 elif signo1 == "<=":
@@ -1102,23 +237,9 @@ def select(cadena, memoriaActual, estrucActual):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "False":
@@ -1127,127 +248,37 @@ def select(cadena, memoriaActual, estrucActual):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) <= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 <= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "True" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "False" and comparar1 == "True":
-                                    print("")
+                                if memoriaActual[i] == "False" and comparar1 == "True":
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
+                                    imprimir(i, estrucActual, memoriaActual)
+                                elif memoriaActual[i] == "True" and comparar1 == "True":
+                                    print("")
+                                elif memoriaActual[i] == "True" and comparar1 == "False":
                                     print("")
                                 else:
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) <= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 <= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
 
                 elif signo1 == ">=":
@@ -1257,153 +288,49 @@ def select(cadena, memoriaActual, estrucActual):
                     for i in range(0, len(memoriaActual)):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == len(estrucActual) - 1:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata - 1
+                                if memoriaActual[i] == "True" and comparar1 == "False":
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
+                                    imprimir(i, estrucActual, memoriaActual)
+                                elif memoriaActual[i] == "False" and comparar1 == "True":
                                     print("")
-                                elif memoriaActual[i] == "True" and comparar1 == "False":
+                                elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 else:
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) >= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 >= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == len(estrucActual) - 1:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata - 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
-                                if memoriaActual[i] == "False" and comparar1 == "True":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    posestruc = i
-                                    posdata = i
-                                    while posestruc >= len(estrucActual):
-                                        posestruc = posestruc - len(estrucActual)
-                                    if posestruc == 0:
-                                        for z in range(0, len(estrucActual)):
-                                            print(memoriaActual[posdata])
-                                            posdata = posdata + 1
-                                    else:
-                                        datos = posdata - posestruc
-                                        izq = 0
-                                        der = posestruc
-                                        while izq < posestruc:
-                                            print(memoriaActual[datos])
-                                            izq = izq + 1
-                                            datos = datos + 1
-                                        while der < len(estrucActual):
-                                            print(memoriaActual[datos])
-                                            der = der + 1
-                                            datos = datos + 1
-                                elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    print("")
+                                if memoriaActual[i] == "True" and comparar1 == "True":
+                                    imprimir(i, estrucActual, memoriaActual)
                                 elif memoriaActual[i] == "True" and comparar1 == "False":
+                                    imprimir(i, estrucActual, memoriaActual)
+                                elif memoriaActual[i] == "False" and comparar1 == "True":
+                                    print("")
+                                elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 else:
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) >= float(comparar1):
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 >= suma2:
-                                            posestruc = i
-                                            posdata = i
-                                            while posestruc >= len(estrucActual):
-                                                posestruc = posestruc - len(estrucActual)
-                                            if posestruc == 0:
-                                                for z in range(0, len(estrucActual)):
-                                                    print(memoriaActual[posdata])
-                                                    posdata = posdata + 1
-                                            else:
-                                                datos = posdata - posestruc
-                                                izq = 0
-                                                der = posestruc
-                                                while izq < posestruc:
-                                                    print(memoriaActual[datos])
-                                                    izq = izq + 1
-                                                    datos = datos + 1
-                                                while der < len(estrucActual):
-                                                    print(memoriaActual[datos])
-                                                    der = der + 1
-                                                    datos = datos + 1
+                                            imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
 
                 elif signo1 == "!=":
@@ -1411,45 +338,274 @@ def select(cadena, memoriaActual, estrucActual):
                     for i in range(0, len(memoriaActual)):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                                posestruc = i
-                                posdata = i
-                                while posestruc >= len(estrucActual):
-                                    posestruc = posestruc - len(estrucActual)
-                                if posestruc == len(estrucActual) - 1:
-                                    for z in range(0, len(estrucActual)):
-                                        print(memoriaActual[posdata])
-                                        posdata = posdata - 1
+                                imprimir(i, estrucActual, memoriaActual)
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                                posestruc = i
-                                posdata = i
-                                while posestruc >= len(estrucActual):
-                                    posestruc = posestruc - len(estrucActual)
-                                if posestruc == 0:
-                                    for z in range(0, len(estrucActual)):
-                                        print(memoriaActual[posdata])
-                                        posdata = posdata + 1
-                                else:
-                                    datos = posdata - posestruc
-                                    izq = 0
-                                    der = posestruc
-                                    while izq < posestruc:
-                                        print(memoriaActual[datos])
-                                        izq = izq + 1
-                                        datos = datos + 1
-                                    while der < len(estrucActual):
-                                        print(memoriaActual[datos])
-                                        der = der + 1
-                                        datos = datos + 1
+                                imprimir(i, estrucActual, memoriaActual)
                             contador = contador + 1
                 else:
-                    print("Signo de consulta erroneo")
+                    print("Signo de consulta incorrecto")
         else:
             for i in memoriaActual:
                 print(i)
     else:
-        print(auxiliar)
+        if bandera:
+            if logicoI:
+                LogicoI.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                                estrucActual, auxiliar)
+            elif logicoO:
+                LogicoO.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                                estrucActual, auxiliar)
+            elif logicoX:
+                LogicoX.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
+                                estrucActual, auxiliar)
+            elif signo1 == "=":
+                contador = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
+                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
+                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            elif signo1 == "<":
+                contador = 0
+                for i in range(0, len(memoriaActual)):
+                    suma1 = 0
+                    suma2 = 0
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "False" and comparar1 == "True":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) < float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 < suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "True" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) < float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 < suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            elif signo1 == ">":
+                contador = 0
+                suma1 = 0
+                suma2 = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "True" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) > float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 > suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "True" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) > float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 > suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            elif signo1 == "<=":
+                contador = 0
+                suma1 = 0
+                suma2 = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "False" and comparar1 == "True":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) <= float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 <= suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "False" and comparar1 == "True":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "True" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) <= float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 <= suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            elif signo1 == ">=":
+                contador = 0
+                suma1 = 0
+                suma2 = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "True" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "True":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) >= float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 >= suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1:
+                            if memoriaActual[i] == "True" and comparar1 == "True":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "True" and comparar1 == "False":
+                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            elif memoriaActual[i] == "False" and comparar1 == "True":
+                                print("")
+                            elif memoriaActual[i] == "False" and comparar1 == "False":
+                                print("")
+                            else:
+                                num = numero(memoriaActual[i])
+                                if num:
+                                    if float(memoriaActual[i]) >= float(comparar1):
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                else:
+                                    for a in memoriaActual[i]:
+                                        suma1 = suma1 + ord(a)
+                                    for a in comparar1:
+                                        suma2 = suma2 + ord(a)
+                                    if suma1 >= suma2:
+                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            elif signo1 == "!=":
+                contador = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
+                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
+                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                        contador = contador + 1
+
+            else:
+                print("Signo de consulta incorrecto")
+        else:
+            for u in auxiliar:
+                contador = 0
+                for i in range(0, len(memoriaActual)):
+                    if contador == len(estrucActual) - 1:
+                        if estrucActual[contador] == u:
+                            print(u + ": " + memoriaActual[i])
+                        contador = 0
+                    else:
+                        if estrucActual[contador] == u:
+                            print(u + ": " + memoriaActual[i])
+                        contador = contador + 1
 
 
 def numero(cadena):
@@ -1477,3 +633,31 @@ def numero(cadena):
                 bandera = False
                 return bandera
     return bandera
+
+
+def imprimir(i, estrucActual, memoriaActual):
+    posestruc = i
+    posdata = i
+    while posestruc >= len(estrucActual):
+        posestruc = posestruc - len(estrucActual)
+    posauxiliar = posdata - posestruc
+    for z in estrucActual:
+        print(z + ": " + memoriaActual[posauxiliar])
+        posauxiliar = posauxiliar + 1
+    print("")
+
+
+def imprimir2(i, estrucActual, memoriaActual, auxiliar):
+    posestruc = i
+    posdata = i
+    while posestruc >= len(estrucActual):
+        posestruc = posestruc - len(estrucActual)
+    for u in auxiliar:
+        posauxiliar = posdata - posestruc
+        for z in estrucActual:
+            if u == z:
+                print(u + ": " + memoriaActual[posauxiliar])
+                posauxiliar = posauxiliar + 1
+            else:
+                posauxiliar = posauxiliar + 1
+        print("")

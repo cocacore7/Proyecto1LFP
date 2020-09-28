@@ -1,4 +1,5 @@
 import Automatas
+import AutomataPrincipal
 
 print("-------------------------------------------")
 print("              ---Comandos---               ")
@@ -30,8 +31,8 @@ def inicio():
     memoriaActual = []
     EstrucActual = []
     if comando == "createset":
-        Automatas.createset(aux, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
-                            EstrucActual)
+        AutomataPrincipal.createset(aux, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
+                                    EstrucActual)
 
     elif comando == "loadinto":
         print("No hay -sets- cargados")

@@ -1,6 +1,3 @@
-import MenuPrincipal
-
-
 def inicio(cadena):
     estado = 0
     palabra = ""
@@ -128,42 +125,6 @@ def inicio(cadena):
                         return palabra
                     else:
                         return "Comando Invalido"
-
-
-def createset(cadena, identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual):
-    comando = ""
-    palabra = ""
-    auxiliar = []
-    inicial = ""
-    for i in cadena:
-        if i != " " and comando != "createset":
-            if i == "c" or i == "r" or i == "e" or i == "a" or i == "t" or i == "s":
-                comando = comando + i
-        else:
-            if i != " " or i == "_" or i == "a" or i == "b" or i == "c" or i == "d" or i == "e" or i == "f" \
-                    or i == "g" or i == "h" or i == "i" or i == "j" or i == "k" or i == "l" or i == "m" or i == "n" \
-                    or i == "ñ" or i == "o" or i == "p" or i == "q" or i == "r" or i == "s" or i == "t" or i == "u" \
-                    or i == "v" or i == "w" or i == "x" or i == "y" or i == "z" or i == "0" or i == "1" or i == "2" \
-                    or i == "3" or i == "4" or i == "5" or i == "6" or i == "7" or i == "8" or i == "9":
-                if inicial == "":
-                    palabra = palabra + i
-                    inicial = i
-                else:
-                    palabra = palabra + i
-    if inicial == "_" or inicial == "a" or inicial == "b" or inicial == "c" or inicial == "d" or \
-            inicial == "e" or inicial == "f" or inicial == "g" or inicial == "h" or inicial == "i" or \
-            inicial == "j" or inicial == "k" or inicial == "l" or inicial == "m" or inicial == "n" or \
-            inicial == "ñ" or inicial == "o" or inicial == "p" or inicial == "q" or inicial == "r" or \
-            inicial == "s" or inicial == "t" or inicial == "u" or inicial == "v" or inicial == "w" or \
-            inicial == "x" or inicial == "y" or inicial == "z":
-        identificadorNombre.append(palabra)
-        identificadorDato.append(auxiliar)
-        identificadorEstruc.append(auxiliar)
-        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual)
-    else:
-        print("Identificador Invalido")
-        print("------------------------------------")
-        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual)
 
 
 def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc):
@@ -487,7 +448,7 @@ def sum(cadena, memoriaActual, estrucActual):
             for z in estrucActual:
                 bandera = True
                 palabra = ""
-                numero = 0
+                num = 0
                 for i in memoriaActual:
                     if contador != len(estrucActual) - 1:
                         if estrucActual[contador] == z:
@@ -513,23 +474,23 @@ def sum(cadena, memoriaActual, estrucActual):
                                     else:
                                         palabra = palabra + u
                             if bandera and estado == 1:
-                                numero = numero + float(palabra)
+                                num = num + float(palabra)
                                 palabra = ""
                             elif bandera and estado == 0:
-                                numero = numero + int(palabra)
+                                num = num + int(palabra)
                                 palabra = ""
                         else:
                             contador = contador + 1
                     else:
                         contador = 0
-                if numero != 0:
-                    print(z + " = " + str(numero))
+                if num != 0:
+                    print(z + " = " + str(num))
 
         else:
             for z in estrucAux:
                 bandera = True
                 palabra = ""
-                numero = 0
+                num = 0
                 for i in memoriaActual:
                     if contador != len(estrucActual) - 1:
                         if estrucActual[contador] == z:
@@ -555,16 +516,261 @@ def sum(cadena, memoriaActual, estrucActual):
                                     else:
                                         palabra = palabra + u
                             if bandera and estado == 1:
-                                numero = numero + float(palabra)
+                                num = num + float(palabra)
                                 palabra = ""
                             elif bandera and estado == 0:
-                                numero = numero + int(palabra)
+                                num = num + int(palabra)
                                 palabra = ""
                         else:
                             contador = contador + 1
                     else:
                         contador = 0
-                if numero != 0:
-                    print(z + " = " + str(numero))
+                if num != 0:
+                    print(z + " = " + str(num))
     else:
         print("No se ingresaron consultas para sumar")
+
+
+def maximo(cadena, memoriaActual, estrucActual):
+    estado = 0
+    palabra = ""
+    auxiliar = ""
+    cadenas = []
+    numeros = []
+    tipos = []
+    for i in cadena:
+        if estado == 0:
+            if palabra == "max":
+                palabra = ""
+                estado = 1
+            elif i != " ":
+                palabra = palabra + i.lower()
+        elif estado == 1:
+            if i != " " and i != ",":
+                palabra = palabra + i
+            elif i == " " or i == ",":
+                auxiliar = auxiliar + " " + palabra
+                palabra = ""
+    auxiliar = auxiliar + " " + palabra
+    estrucAux = auxiliar.split()
+    reemplazo = []
+    for u in estrucAux:
+        cadaux = []
+        numaux = []
+        tipo = ""
+        reemplazoaux = ""
+        contador = 0
+        for i in range(0, len(memoriaActual)):
+            if contador == len(estrucActual) - 1:
+                if estrucActual[contador] == u:
+                    if reemplazoaux == "":
+                        reemplazoaux = estrucActual[contador]
+                    if memoriaActual[i] == "True":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(1)
+                        tipo = "bool"
+                    elif memoriaActual[i] == "False":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(0)
+                        tipo = "bool"
+                    else:
+                        estado = numero(memoriaActual[i])
+                        if estado:
+                            numaux.append(memoriaActual[i])
+                            cadaux.append("")
+                            tipo = "numero"
+                        else:
+                            suma1 = 0
+                            for a in memoriaActual[i]:
+                                suma1 = suma1 + ord(a)
+                            numaux.append(suma1)
+                            cadaux.append(memoriaActual[i])
+                            tipo = "string"
+                contador = 0
+            else:
+                if estrucActual[contador] == u:
+                    if reemplazoaux == "":
+                        reemplazoaux = estrucActual[contador]
+                    if memoriaActual[i] == "True":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(1)
+                        tipo = "bool"
+                    elif memoriaActual[i] == "False":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(0)
+                        tipo = "bool"
+                    else:
+                        estado = numero(memoriaActual[i])
+                        if estado:
+                            numaux.append(memoriaActual[i])
+                            cadaux.append("")
+                            tipo = "numero"
+                        else:
+                            suma1 = 0
+                            for a in memoriaActual[i]:
+                                suma1 = suma1 + ord(a)
+                            numaux.append(suma1)
+                            cadaux.append(memoriaActual[i])
+                            tipo = "string"
+                contador = contador + 1
+        if len(cadaux) != 0:
+            cadenas.append(cadaux)
+            numeros.append(numaux)
+            tipos.append(tipo)
+            reemplazo.append(reemplazoaux)
+
+    for i in range(0, len(cadenas)):
+        if tipos[i] == "bool":
+            for u in numeros[i]:
+                if u == 1:
+                    print(reemplazo[i] + ": True" + " (Tipo: Booleano)")
+        elif tipos[i] == "string":
+            mayor = max(numeros[i])
+            posicion = 0
+            posicion2 = 0
+            for u in numeros[i]:
+                if u == mayor:
+                    for a in cadenas[i]:
+                        if posicion == posicion2:
+                            print(reemplazo[i] + ": " + a + " (Tipo: Cadena)")
+                        posicion2 = posicion2 + 1
+                posicion = posicion + 1
+        elif tipos[i] == "numero":
+            mayor = max(numeros[i])
+            print(reemplazo[i] + ": " + str(mayor) + " (Tipo: Numerico)")
+
+
+def minimo(cadena, memoriaActual, estrucActual):
+    estado = 0
+    palabra = ""
+    auxiliar = ""
+    cadenas = []
+    numeros = []
+    tipos = []
+    for i in cadena:
+        if estado == 0:
+            if palabra == "min":
+                palabra = ""
+                estado = 1
+            elif i != " ":
+                palabra = palabra + i.lower()
+        elif estado == 1:
+            if i != " " and i != ",":
+                palabra = palabra + i
+            elif i == " " or i == ",":
+                auxiliar = auxiliar + " " + palabra
+                palabra = ""
+    auxiliar = auxiliar + " " + palabra
+    estrucAux = auxiliar.split()
+    reemplazo = []
+    for u in estrucAux:
+        cadaux = []
+        numaux = []
+        tipo = ""
+        reemplazoaux = ""
+        contador = 0
+        for i in range(0, len(memoriaActual)):
+            if contador == len(estrucActual) - 1:
+                if estrucActual[contador] == u:
+                    if reemplazoaux == "":
+                        reemplazoaux = estrucActual[contador]
+                    if memoriaActual[i] == "True":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(1)
+                        tipo = "bool"
+                    elif memoriaActual[i] == "False":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(0)
+                        tipo = "bool"
+                    else:
+                        estado = numero(memoriaActual[i])
+                        if estado:
+                            numaux.append(memoriaActual[i])
+                            cadaux.append("")
+                            tipo = "numero"
+                        else:
+                            suma1 = 0
+                            for a in memoriaActual[i]:
+                                suma1 = suma1 + ord(a)
+                            numaux.append(suma1)
+                            cadaux.append(memoriaActual[i])
+                            tipo = "string"
+                contador = 0
+            else:
+                if estrucActual[contador] == u:
+                    if reemplazoaux == "":
+                        reemplazoaux = estrucActual[contador]
+                    if memoriaActual[i] == "True":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(1)
+                        tipo = "bool"
+                    elif memoriaActual[i] == "False":
+                        cadaux.append(memoriaActual[i])
+                        numaux.append(0)
+                        tipo = "bool"
+                    else:
+                        estado = numero(memoriaActual[i])
+                        if estado:
+                            numaux.append(memoriaActual[i])
+                            cadaux.append("")
+                            tipo = "numero"
+                        else:
+                            suma1 = 0
+                            for a in memoriaActual[i]:
+                                suma1 = suma1 + ord(a)
+                            numaux.append(suma1)
+                            cadaux.append(memoriaActual[i])
+                            tipo = "string"
+                contador = contador + 1
+        if len(cadaux) != 0:
+            cadenas.append(cadaux)
+            numeros.append(numaux)
+            tipos.append(tipo)
+            reemplazo.append(reemplazoaux)
+
+    for i in range(0, len(cadenas)):
+        if tipos[i] == "bool":
+            for u in numeros[i]:
+                if u == 0:
+                    print(reemplazo[i] + ": False" + " (Tipo: Booleano)")
+        elif tipos[i] == "string":
+            mayor = min(numeros[i])
+            posicion = 0
+            posicion2 = 0
+            for u in numeros[i]:
+                if u == mayor:
+                    for a in cadenas[i]:
+                        if posicion == posicion2:
+                            print(reemplazo[i] + ": " + a + " (Tipo: Cadena)")
+                        posicion2 = posicion2 + 1
+                posicion = posicion + 1
+        elif tipos[i] == "numero":
+            mayor = min(numeros[i])
+            print(reemplazo[i] + ": " + str(mayor) + " (Tipo: Numerico)")
+
+
+def numero(cadena):
+    bandera = False
+    estado = 0
+    for i in cadena:
+        if estado == 0:
+            if i == "0" or i == "1" or i == "2" or i == "3" or i == "4" or i == "5" or i == "6" or i == "7" or \
+                    i == "8" or i == "9":
+                bandera = True
+            elif i == ".":
+                bandera = True
+                estado = 1
+            else:
+                bandera = False
+                return bandera
+        elif estado == 1:
+            if i == "0" or i == "1" or i == "2" or i == "3" or i == "4" or i == "5" or i == "6" or i == "7" or \
+                    i == "8" or i == "9":
+                bandera = True
+            elif i == ".":
+                bandera = False
+                return bandera
+            else:
+                bandera = False
+            return bandera
+    return bandera

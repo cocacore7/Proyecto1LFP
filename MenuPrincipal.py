@@ -1,5 +1,6 @@
 import Automatas
 import Select
+import AutomataPrincipal
 
 
 def cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual, estrucActual):
@@ -19,8 +20,8 @@ def cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoria
     aux = entrada.lower()
     comando = Automatas.inicio(aux)
     if comando == "createset":
-        Automatas.createset(aux, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
-                            estrucActual)
+        AutomataPrincipal.createset(aux, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
+                                    estrucActual)
 
     elif comando == "loadinto":
         Automatas.loadinto(aux, identificadorNombre, identificadorDatos, identificadorEstruc)
@@ -51,11 +52,11 @@ def cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoria
         cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual, estrucActual)
 
     elif comando == "max":
-        print(comando)
+        Automatas.maximo(entrada, memoriaActual, estrucActual)
         cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual, estrucActual)
 
     elif comando == "min":
-        print(comando)
+        Automatas.minimo(entrada, memoriaActual, estrucActual)
         cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual, estrucActual)
 
     elif comando == "sum":

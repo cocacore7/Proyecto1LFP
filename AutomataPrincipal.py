@@ -1,7 +1,7 @@
 import MenuPrincipal
 
 
-def createset(cadena, identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual):
+def createset(cadena, identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual, tokens):
     comando = ""
     palabra = ""
     auxiliar = []
@@ -30,8 +30,12 @@ def createset(cadena, identificadorNombre, identificadorDato, identificadorEstru
         identificadorNombre.append(palabra)
         identificadorDato.append(auxiliar)
         identificadorEstruc.append(auxiliar)
-        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual)
+        tokens.append("tk: CREATE SET (Palabra Reservada)")
+        tokens.append("tk: " + palabra + " (Identificador)")
+        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual,
+                             tokens)
     else:
         print("Identificador Invalido")
         print("------------------------------------")
-        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual)
+        MenuPrincipal.cargaA(identificadorNombre, identificadorDato, identificadorEstruc, memoriaActual, EstrucActual,
+                             tokens)

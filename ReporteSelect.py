@@ -1,8 +1,3 @@
-import LogicoI
-import LogicoO
-import LogicoX
-
-
 def select(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     signo = 1
@@ -24,7 +19,6 @@ def select(cadena, memoriaActual, estrucActual, tokens):
     for i in cadena:
         if estado == 0:
             if palabra == "select":
-                tokens.append("tk: SELECT (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -142,25 +136,27 @@ def select(cadena, memoriaActual, estrucActual, tokens):
     if auxiliar[0] == "*":
         if bandera:
             if logicoI:
-                LogicoI.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                               estrucActual)
+                # LogicoI.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                print("")
             elif logicoO:
-                LogicoO.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                               estrucActual)
+                # LogicoO.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                print("")
             elif logicoX:
-                LogicoX.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                               estrucActual)
+                # LogicoX.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                print("")
             else:
                 if signo1 == "=":
                     contador = 0
                     for i in range(0, len(memoriaActual)):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
+                                return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
+                                return final
                             contador = contador + 1
 
                 elif signo1 == "<":
@@ -171,7 +167,8 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "False" and comparar1 == "True":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -182,19 +179,22 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) < float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 < suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -205,14 +205,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) < float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 < suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = contador + 1
 
                 elif signo1 == ">":
@@ -223,7 +225,8 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -234,19 +237,22 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) > float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 > suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -257,14 +263,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) > float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 > suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = contador + 1
 
                 elif signo1 == "<=":
@@ -275,9 +283,11 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "False" and comparar1 == "True":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "False":
@@ -286,21 +296,25 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) <= float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 <= suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "False" and comparar1 == "True":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "True" and comparar1 == "False":
@@ -309,14 +323,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) <= float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 <= suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = contador + 1
 
                 elif signo1 == ">=":
@@ -327,9 +343,11 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "True":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
@@ -338,21 +356,25 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) >= float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 >= suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1:
                                 if memoriaActual[i] == "True" and comparar1 == "True":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "True" and comparar1 == "False":
-                                    imprimir(i, estrucActual, memoriaActual)
+                                    final = imprimir(i, estrucActual, memoriaActual)
+                                    return final
                                 elif memoriaActual[i] == "False" and comparar1 == "True":
                                     print("")
                                 elif memoriaActual[i] == "False" and comparar1 == "False":
@@ -361,14 +383,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                     num = numero(memoriaActual[i])
                                     if num:
                                         if float(memoriaActual[i]) >= float(comparar1):
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                                     else:
                                         for a in memoriaActual[i]:
                                             suma1 = suma1 + ord(a)
                                         for a in comparar1:
                                             suma2 = suma2 + ord(a)
                                         if suma1 >= suma2:
-                                            imprimir(i, estrucActual, memoriaActual)
+                                            final = imprimir(i, estrucActual, memoriaActual)
+                                            return final
                             contador = contador + 1
 
                 elif signo1 == "!=":
@@ -376,38 +400,41 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                     for i in range(0, len(memoriaActual)):
                         if contador == len(estrucActual) - 1:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
+                                return final
                             contador = 0
                         else:
                             if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
+                                return final
                             contador = contador + 1
                 else:
                     print("Signo de consulta incorrecto")
         else:
-            for i in memoriaActual:
-                print(i)
+            return memoriaActual
     else:
         if bandera:
             if logicoI:
-                LogicoI.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                                estrucActual, auxiliar)
+                # LogicoI.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                print("")
             elif logicoO:
-                LogicoO.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                                estrucActual, auxiliar)
+                # LogicoO.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                print("")
             elif logicoX:
-                LogicoX.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual,
-                                estrucActual, auxiliar)
+                # LogicoX.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                print("")
             elif signo1 == "=":
                 contador = 0
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            return final
                         contador = contador + 1
 
             elif signo1 == "<":
@@ -418,7 +445,8 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -429,19 +457,22 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar1 == "True":
@@ -452,14 +483,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = contador + 1
 
             elif signo1 == ">":
@@ -470,7 +503,8 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -481,19 +515,22 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar1 == "True":
@@ -504,14 +541,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = contador + 1
 
             elif signo1 == "<=":
@@ -522,9 +561,11 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar1 == "False":
@@ -533,21 +574,25 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar1 == "False":
@@ -556,14 +601,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = contador + 1
 
             elif signo1 == ">=":
@@ -574,9 +621,11 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar1 == "False":
@@ -585,21 +634,25 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                return final
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar1 == "False":
@@ -608,14 +661,16 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        return final
                         contador = contador + 1
 
             elif signo1 == "!=":
@@ -623,27 +678,31 @@ def select(cadena, memoriaActual, estrucActual, tokens):
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            return final
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            return final
                         contador = contador + 1
 
             else:
                 print("Signo de consulta incorrecto")
         else:
+            final = []
             for u in auxiliar:
                 contador = 0
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == u:
-                            print(u + ": " + memoriaActual[i])
+                            final.append(u + ": " + memoriaActual[i])
                         contador = 0
                     else:
                         if estrucActual[contador] == u:
-                            print(u + ": " + memoriaActual[i])
+                            final.append(u + ": " + memoriaActual[i])
                         contador = contador + 1
+            return final
 
 
 def numero(cadena):
@@ -676,26 +735,28 @@ def numero(cadena):
 def imprimir(i, estrucActual, memoriaActual):
     posestruc = i
     posdata = i
+    final = []
     while posestruc >= len(estrucActual):
         posestruc = posestruc - len(estrucActual)
     posauxiliar = posdata - posestruc
     for z in estrucActual:
-        print(z + ": " + memoriaActual[posauxiliar])
+        final.append(z + ": " + memoriaActual[posauxiliar])
         posauxiliar = posauxiliar + 1
-    print("")
+    return final
 
 
 def imprimir2(i, estrucActual, memoriaActual, auxiliar):
     posestruc = i
     posdata = i
+    final = []
     while posestruc >= len(estrucActual):
         posestruc = posestruc - len(estrucActual)
     for u in auxiliar:
         posauxiliar = posdata - posestruc
         for z in estrucActual:
             if u == z:
-                print(u + ": " + memoriaActual[posauxiliar])
+                final.append(u + ": " + memoriaActual[posauxiliar])
                 posauxiliar = posauxiliar + 1
             else:
                 posauxiliar = posauxiliar + 1
-        print("")
+    return final

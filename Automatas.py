@@ -127,7 +127,7 @@ def inicio(cadena):
                         return "Comando Invalido"
 
 
-def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc):
+def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc, tokens):
     print("------------------------------------")
     # Variables
     ingresar = False
@@ -146,6 +146,7 @@ def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc
             if palabra == "loadinto":
                 palabra = ""
                 estado = 1
+                tokens.append("tk: LOAD INTO (Palabra Reservada)")
             elif i != " ":
                 palabra = palabra + i
         elif estado == 1:
@@ -153,11 +154,13 @@ def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc
                 palabra = palabra + i
             elif i == " " and palabra != "":
                 memoria = palabra
+                tokens.append("tk: " + palabra + " (Identificador)")
                 palabra = ""
                 estado = 2
         elif estado == 2:
             if palabra == "files":
                 comando = palabra
+                tokens.append("tk: FILES (Palabra Reservada)")
                 palabra = ""
                 estado = 3
             elif i != " ":
@@ -165,6 +168,8 @@ def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc
         elif estado == 3:
             if i != " " and i != ",":
                 palabra = palabra + i
+            elif i == ",":
+                tokens.append("tk: ',' (Separador)")
             elif i != " " and palabra != "":
                 archivos.append(palabra)
                 palabra = ""
@@ -219,6 +224,7 @@ def loadinto(cadena, identificadorNombre, identificadorDato, identificadorEstruc
                         miarchivo.close()
                         estado = 0
                         comparar = estructuraload(data)
+                        tokens.append("tk: " + archivos[u] + " (Carga Archivos)")
                         if estructura == comparar:
                             for letra in data:
                                 if estado == 0:
@@ -295,7 +301,7 @@ def estructuraload(data):
             return estructura
 
 
-def usesetD(cadena, identificadorNombre, identificadorDato):
+def usesetD(cadena, identificadorNombre, identificadorDato, tokens):
     estado = 0
     palabra = ""
     bandera = False
@@ -303,6 +309,7 @@ def usesetD(cadena, identificadorNombre, identificadorDato):
     for i in cadena:
         if estado == 0:
             if palabra == "useset":
+                tokens.append("tk: USE SET (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -312,6 +319,7 @@ def usesetD(cadena, identificadorNombre, identificadorDato):
                 palabra = palabra + i
     for i in range(0, len(identificadorNombre)):
         if palabra == identificadorNombre[i]:
+            tokens.append("tk: " + palabra + " (Identificador)")
             bandera = True
             posicion = i
     if bandera:
@@ -349,12 +357,13 @@ def usesetE(cadena, identificadorNombre, identificadorEstruc):
             return identificadorEstruc[posicion]
 
 
-def printin(cadena):
+def printin(cadena, tokens):
     estado = 0
     palabra = ""
     for i in cadena:
         if estado == 0:
             if palabra == "printin":
+                tokens.append("tk: PRINT IN (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -363,22 +372,28 @@ def printin(cadena):
             if i != " ":
                 palabra = palabra + i
     if palabra == "blue":
+        tokens.append("tk: blue (Color Consola)")
         print("\x1b[1;34m")
     elif palabra == "red":
+        tokens.append("tk: red (Color Consola)")
         print("\x1b[1;31m")
     elif palabra == "green":
+        tokens.append("tk: green (Color Consola)")
         print("\x1b[1;32m")
     elif palabra == "yellow":
+        tokens.append("tk: yellow (Color Consola)")
         print("\x1b[1;33m")
     elif palabra == "orange":
+        tokens.append("tk: orange (Color Consola)")
         print("\x1b[1;37m")
     elif palabra == "pink":
+        tokens.append("tk: pink (Color Consola)")
         print("\x1b[1;37m")
     else:
         print("Color invalido")
 
 
-def count(cadena, memoriaActual, estrucActual):
+def count(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     total = 0
     contador = 0
@@ -387,6 +402,7 @@ def count(cadena, memoriaActual, estrucActual):
     for i in cadena:
         if estado == 0:
             if palabra == "count":
+                tokens.append("tk: COUNT (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -396,11 +412,14 @@ def count(cadena, memoriaActual, estrucActual):
                 palabra = palabra + i
             elif i == " " or i == ",":
                 auxiliar = auxiliar + " " + palabra
+                if i == ",":
+                    tokens.append("tk: ',' (Separador)")
                 palabra = ""
     auxiliar = auxiliar + " " + palabra
     estrucAux = auxiliar.split()
     if len(estrucAux) != 0:
         if estrucAux[0] == "*":
+            tokens.append("tk: " + estrucAux[0] + " (Todos Identificadores)")
             for _ in memoriaActual:
                 total = total + 1
             print("Total: " + str(total))
@@ -408,22 +427,24 @@ def count(cadena, memoriaActual, estrucActual):
             for u in estrucAux:
                 total = 0
                 for _ in memoriaActual:
-                    if contador != len(estrucActual) - 1:
+                    if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == u:
-                            contador = contador + 1
                             total = total + 1
-                        else:
-                            contador = contador + 1
-                    else:
                         contador = 0
+                    else:
+                        if estrucActual[contador] == u:
+                            total = total + 1
+                        contador = contador + 1
+
                 for z in estrucActual:
                     if z == u:
+                        tokens.append("tk: " + u + " (Identificador)")
                         print(u + ": " + str(total))
     else:
         print("No se ingresaron consultas para contar")
 
 
-def sum(cadena, memoriaActual, estrucActual):
+def sum(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     contador = 0
     palabra = ""
@@ -431,6 +452,7 @@ def sum(cadena, memoriaActual, estrucActual):
     for i in cadena:
         if estado == 0:
             if palabra == "sum":
+                tokens.append("tk: SUM (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -445,6 +467,7 @@ def sum(cadena, memoriaActual, estrucActual):
     estrucAux = auxiliar.split()
     if len(estrucAux) != 0:
         if estrucAux[0] == "*":
+            tokens.append("tk: * (Todos Identificadores)")
             for z in estrucActual:
                 bandera = True
                 palabra = ""
@@ -526,12 +549,13 @@ def sum(cadena, memoriaActual, estrucActual):
                     else:
                         contador = 0
                 if num != 0:
+                    tokens.append("tk: " + z + " (Identificador)")
                     print(z + " = " + str(num))
     else:
         print("No se ingresaron consultas para sumar")
 
 
-def maximo(cadena, memoriaActual, estrucActual):
+def maximo(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     palabra = ""
     auxiliar = ""
@@ -541,6 +565,7 @@ def maximo(cadena, memoriaActual, estrucActual):
     for i in cadena:
         if estado == 0:
             if palabra == "max":
+                tokens.append("tk: MAX (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -621,10 +646,12 @@ def maximo(cadena, memoriaActual, estrucActual):
 
     for i in range(0, len(cadenas)):
         if tipos[i] == "bool":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             for u in numeros[i]:
                 if u == 1:
                     print(reemplazo[i] + ": True" + " (Tipo: Booleano)")
         elif tipos[i] == "string":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             mayor = max(numeros[i])
             posicion = 0
             posicion2 = 0
@@ -636,11 +663,12 @@ def maximo(cadena, memoriaActual, estrucActual):
                         posicion2 = posicion2 + 1
                 posicion = posicion + 1
         elif tipos[i] == "numero":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             mayor = max(numeros[i])
             print(reemplazo[i] + ": " + str(mayor) + " (Tipo: Numerico)")
 
 
-def minimo(cadena, memoriaActual, estrucActual):
+def minimo(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     palabra = ""
     auxiliar = ""
@@ -650,6 +678,7 @@ def minimo(cadena, memoriaActual, estrucActual):
     for i in cadena:
         if estado == 0:
             if palabra == "min":
+                tokens.append("tk: MIN (Palabra Reservada)")
                 palabra = ""
                 estado = 1
             elif i != " ":
@@ -730,10 +759,12 @@ def minimo(cadena, memoriaActual, estrucActual):
 
     for i in range(0, len(cadenas)):
         if tipos[i] == "bool":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             for u in numeros[i]:
                 if u == 0:
                     print(reemplazo[i] + ": False" + " (Tipo: Booleano)")
         elif tipos[i] == "string":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             mayor = min(numeros[i])
             posicion = 0
             posicion2 = 0
@@ -745,6 +776,7 @@ def minimo(cadena, memoriaActual, estrucActual):
                         posicion2 = posicion2 + 1
                 posicion = posicion + 1
         elif tipos[i] == "numero":
+            tokens.append("tk: " + reemplazo[i] + " (Identificador)")
             mayor = min(numeros[i])
             print(reemplazo[i] + ": " + str(mayor) + " (Tipo: Numerico)")
 

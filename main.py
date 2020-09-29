@@ -30,9 +30,10 @@ def inicio():
     identificadorEstruc = []
     memoriaActual = []
     EstrucActual = []
+    tokens = []
     if comando == "createset":
         AutomataPrincipal.createset(aux, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
-                                    EstrucActual)
+                                    EstrucActual, tokens)
 
     elif comando == "loadinto":
         print("No hay -sets- cargados")
@@ -51,7 +52,7 @@ def inicio():
         inicio()
 
     elif comando == "printin":
-        Automatas.printin(aux)
+        Automatas.printin(aux, tokens)
         print("No hay -sets- cargados")
         inicio()
 

@@ -26,13 +26,14 @@ def count(cadena, memoriaActual, estrucActual, tokens):
                     tokens.append("tk: ',' (Separador)")
                 palabra = ""
     auxiliar = auxiliar + " " + palabra
-    estrucAux = auxiliar.split()
+    estrucAux = auxiliar.lower().split()
 
     if len(estrucAux) != 0:
         if estrucAux[0] == "*":
             for _ in memoriaActual:
                 total = total + 1
-            return "Total: " + str(total)
+            final.append("Total: " + str(total))
+            return final
         else:
             for u in estrucAux:
                 total = 0
@@ -81,7 +82,7 @@ def sum(cadena, memoriaActual, estrucActual, tokens):
                 auxiliar = auxiliar + " " + palabra
                 palabra = ""
     auxiliar = auxiliar + " " + palabra
-    estrucAux = auxiliar.split()
+    estrucAux = auxiliar.lower().split()
     if len(estrucAux) != 0:
         if estrucAux[0] == "*":
             for z in estrucActual:
@@ -146,7 +147,7 @@ def maximo(cadena, memoriaActual, estrucActual, tokens):
                 auxiliar = auxiliar + " " + palabra
                 palabra = ""
     auxiliar = auxiliar + " " + palabra
-    estrucAux = auxiliar.split()
+    estrucAux = auxiliar.lower().split()
     reemplazo = []
     for u in estrucAux:
         cadaux = []
@@ -261,7 +262,7 @@ def minimo(cadena, memoriaActual, estrucActual, tokens):
                 auxiliar = auxiliar + " " + palabra
                 palabra = ""
     auxiliar = auxiliar + " " + palabra
-    estrucAux = auxiliar.split()
+    estrucAux = auxiliar.lower().split()
     reemplazo = []
     for u in estrucAux:
         cadaux = []

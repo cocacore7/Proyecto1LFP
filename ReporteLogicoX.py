@@ -1,6 +1,7 @@
 def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual):
     opcion1 = True
     opcion2 = True
+    final = []
     for w in range(1, 2):
         if opcion1 and w != 2:
             if signo1 == "=":
@@ -8,12 +9,12 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                             opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                             opcion2 = False
                         contador = contador + 1
 
@@ -25,7 +26,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
                                 print("")
@@ -37,7 +38,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -45,7 +46,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = 0
                     else:
@@ -83,7 +84,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -95,7 +96,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -103,13 +104,13 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -121,7 +122,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -129,7 +130,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -141,10 +142,10 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -154,7 +155,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -162,16 +163,16 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -181,7 +182,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -189,7 +190,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -201,10 +202,10 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
@@ -214,7 +215,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -222,16 +223,16 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
@@ -241,7 +242,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -249,7 +250,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -258,12 +259,12 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                             opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                             opcion2 = False
                         contador = contador + 1
 
@@ -276,11 +277,11 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] == comparar2:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] == comparar2:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             elif signo2 == "<":
@@ -291,7 +292,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "True":
@@ -302,19 +303,19 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "True":
@@ -325,14 +326,14 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             elif signo2 == ">":
@@ -343,7 +344,7 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "True":
@@ -354,19 +355,19 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "True":
@@ -377,14 +378,14 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             elif signo2 == "<=":
@@ -395,9 +396,9 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "False":
@@ -406,21 +407,21 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "False":
@@ -429,14 +430,14 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             elif signo2 == ">=":
@@ -447,9 +448,9 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "False":
@@ -458,21 +459,21 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "True":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir(i, estrucActual, memoriaActual)
+                                final = imprimir(i, estrucActual, memoriaActual)
                             elif memoriaActual[i] == "False" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "False":
@@ -481,14 +482,14 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar2):
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir(i, estrucActual, memoriaActual)
+                                        final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             elif signo2 == "!=":
@@ -496,20 +497,22 @@ def logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoria
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] != comparar2:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] != comparar2:
-                            imprimir(i, estrucActual, memoriaActual)
+                            final = imprimir(i, estrucActual, memoriaActual)
                         contador = contador + 1
 
             else:
                 print("Signo Invalido")
+    return final
 
 
 def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar):
     opcion1 = True
     opcion2 = True
+    final = []
     for w in range(1, 2):
         if opcion1 and w != 2:
             if signo1 == "=":
@@ -517,12 +520,12 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] == comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             opcion2 = False
                         contador = contador + 1
 
@@ -534,7 +537,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
                                 print("")
@@ -546,7 +549,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -554,13 +557,13 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
                                 print("")
@@ -572,7 +575,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -580,7 +583,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -592,7 +595,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -604,7 +607,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -612,13 +615,13 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -630,7 +633,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -638,7 +641,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -650,10 +653,10 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -663,7 +666,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -671,16 +674,16 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
                                 print("")
@@ -690,7 +693,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -698,7 +701,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -710,10 +713,10 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
@@ -723,7 +726,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -731,16 +734,16 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "True" and comparar1 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "True" and comparar1 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 opcion2 = False
                             elif memoriaActual[i] == "False" and comparar1 == "True":
                                 print("")
@@ -750,7 +753,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar1):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                                 else:
                                     for a in memoriaActual[i]:
@@ -758,7 +761,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                     for a in comparar1:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                         opcion2 = False
                         contador = contador + 1
 
@@ -767,12 +770,12 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             opcion2 = False
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1 and memoriaActual[i] != comparar1:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             opcion2 = False
                         contador = contador + 1
         if opcion2:
@@ -781,11 +784,11 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] == comparar2:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] == comparar2:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
             elif signo2 == "<":
@@ -796,7 +799,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "True":
@@ -807,19 +810,19 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "True":
@@ -830,14 +833,14 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) < float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 < suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
             elif signo2 == ">":
@@ -848,7 +851,7 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "True":
@@ -859,19 +862,19 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "True":
@@ -882,14 +885,14 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) > float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 > suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
             elif signo2 == "<=":
@@ -900,9 +903,9 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "False":
@@ -911,21 +914,21 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion1:
                             if memoriaActual[i] == "False" and comparar2 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "True" and comparar2 == "False":
@@ -934,14 +937,14 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) <= float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 <= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
             elif signo2 == ">=":
@@ -952,9 +955,9 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "False":
@@ -963,21 +966,21 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2:
                             if memoriaActual[i] == "True" and comparar2 == "True":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "True" and comparar2 == "False":
-                                imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                             elif memoriaActual[i] == "False" and comparar2 == "True":
                                 print("")
                             elif memoriaActual[i] == "False" and comparar2 == "False":
@@ -986,14 +989,14 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                                 num = numero(memoriaActual[i])
                                 if num:
                                     if float(memoriaActual[i]) >= float(comparar2):
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                                 else:
                                     for a in memoriaActual[i]:
                                         suma1 = suma1 + ord(a)
                                     for a in comparar2:
                                         suma2 = suma2 + ord(a)
                                     if suma1 >= suma2:
-                                        imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                                        final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
             elif signo2 == "!=":
@@ -1001,11 +1004,11 @@ def logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memori
                 for i in range(0, len(memoriaActual)):
                     if contador == len(estrucActual) - 1:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] != comparar2:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = 0
                     else:
                         if estrucActual[contador] == condicion2 and memoriaActual[i] != comparar2:
-                            imprimir2(i, estrucActual, memoriaActual, auxiliar)
+                            final = imprimir2(i, estrucActual, memoriaActual, auxiliar)
                         contador = contador + 1
 
 
@@ -1039,26 +1042,28 @@ def numero(cadena):
 def imprimir(i, estrucActual, memoriaActual):
     posestruc = i
     posdata = i
+    final = []
     while posestruc >= len(estrucActual):
         posestruc = posestruc - len(estrucActual)
     posauxiliar = posdata - posestruc
     for z in estrucActual:
-        print(z + ": " + memoriaActual[posauxiliar])
+        final.append(z + ": " + memoriaActual[posauxiliar])
         posauxiliar = posauxiliar + 1
-    print("")
+    return final
 
 
 def imprimir2(i, estrucActual, memoriaActual, auxiliar):
     posestruc = i
     posdata = i
+    final = []
     while posestruc >= len(estrucActual):
         posestruc = posestruc - len(estrucActual)
     for u in auxiliar:
         posauxiliar = posdata - posestruc
         for z in estrucActual:
             if u == z:
-                print(u + ": " + memoriaActual[posauxiliar])
+                final.append(u + ": " + memoriaActual[posauxiliar])
                 posauxiliar = posauxiliar + 1
             else:
                 posauxiliar = posauxiliar + 1
-    print("")
+    return final

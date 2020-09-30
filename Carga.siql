@@ -1,0 +1,13 @@
+CREATE SET Flores;
+LOAD INTO comida FILES comida.aon;
+USE SET comida;
+PRINT IN BLUE;
+COUNT *;
+PRINT IN YELLOW;
+SUM nombre, maje, costo, orden;
+PRINT IN RED;
+MAX nombre, costo, orden, estado;
+PRINT IN GREEN
+mimir;
+PRINT IN ORANGE
+MIN nombre, costo, orden, estado;

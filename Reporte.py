@@ -16,10 +16,10 @@ def reportar(cadena, memoriaActual, estrucActual, tokens):
                 estado = 1
                 tokens.append("tk: REPORT TO (Palabra Reservada)")
             elif i != " ":
-                palabra = palabra + i
+                palabra = palabra + i.lower()
         elif estado == 1:
             if i != " ":
-                palabra = palabra + i
+                palabra = palabra + i.lower()
             elif i == " " and palabra != "":
                 archivo = palabra
                 tokens.append("tk: " + palabra + " (Archivo Reportado)")
@@ -28,59 +28,77 @@ def reportar(cadena, memoriaActual, estrucActual, tokens):
         elif estado == 2:
             if i == " " and palabra != "":
                 if comando == "":
-                    comando = palabra
+                    comando = palabra.lower()
                 cadaux = cadaux + " " + palabra
+                palabra = ""
             else:
                 palabra = palabra + i
+    cadaux = cadaux + " " + palabra
 
     if comando == "select":
         tokens.append("tk: SELECT (Palabra Reservada)")
         final = ReporteSelect.select(cadaux, memoriaActual, estrucActual, tokens)
-        if len(final) != 0:
-            archivo(archivo, final)
+        if final is not None:
+            reporte(archivo, final)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
 
     elif comando == "max":
         tokens.append("tk: MAX (Palabra Reservada)")
-        final = AutomatasReportes.maximo(cadaux, memoriaActual, estrucActual, tokens)
-        if len(final) != 0:
-            archivo(archivo, final)
+        final = AutomatasReportes.maximo(cadaux.lower(), memoriaActual, estrucActual, tokens)
+        if final is not None:
+            reporte(archivo, final)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
 
     elif comando == "min":
         tokens.append("tk: MIN (Palabra Reservada)")
-        final = AutomatasReportes.minimo(cadaux, memoriaActual, estrucActual, tokens)
-        if len(final) != 0:
-            archivo(archivo, final)
+        final = AutomatasReportes.minimo(cadaux.lower(), memoriaActual, estrucActual, tokens)
+        if final is not None:
+            reporte(archivo, final)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
 
     elif comando == "sum":
         tokens.append("tk: SUM (Palabra Reservada)")
-        final = AutomatasReportes.sum(cadaux, memoriaActual, estrucActual, tokens)
-        if len(final) != 0:
-            archivo(archivo, final)
+        final = AutomatasReportes.sum(cadaux.lower(), memoriaActual, estrucActual, tokens)
+        if final is not None:
+            reporte(archivo, final)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
 
     elif comando == "count":
         tokens.append("tk: COUNT (Palabra Reservada)")
-        final = AutomatasReportes.count(cadaux, memoriaActual, estrucActual, tokens)
-        if len(final) != 0:
-            archivo(archivo, final)
+        final = AutomatasReportes.count(cadaux.lower(), memoriaActual, estrucActual, tokens)
+        if final is not None:
+            reporte(archivo, final)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
 
-    elif comando == "reporttokens":
-        if len(tokens) != 0:
-            archivo(archivo, tokens)
+    elif comando == "listattributes" or comando == "listattribute" or comando == "list":
+        tokens.append("tk: LIST ATTRIBUTES (Palabra Reservada)")
+        if estrucActual is not None:
+            reporte(archivo, estrucActual)
+            print("Reporte Realizado con exito")
+        else:
+            print("No se encontraron Datos")
+
+    elif comando == "script":
+        tokens.append("tk: LIST ATTRIBUTES (Palabra Reservada)")
+        if estrucActual is not None:
+            reporte(archivo, estrucActual)
+            print("Reporte Realizado con exito")
+        else:
+            print("No se encontraron Datos")
+
+    elif comando == "reporttokens" or comando == "reporttoken" or comando == "report":
+        if tokens is not None:
+            reporte(archivo, tokens)
             print("Reporte Realizado con exito")
         else:
             print("No se encontraron Datos")
@@ -110,12 +128,14 @@ def reporte(nombre, memoria):
         arch.write('<body>' + "\n")
         arch.write('<center>' + "\n")
 
+        contador = 1
         for i in memoria:
-            arch.write("   <h4>" + i + "</h4>" + "\n")
+            arch.write("   <h4>" + str(contador) + ") " + i + "</h4>" + "\n")
+            contador = contador + 1
 
         arch.write('</center>' + "\n")
         arch.write('</body>' + "\n")
         arch.write('</html>')
         arch.close()
         print("Reporte Creado")
-        webbrowser.open("reporte.html")
+        webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(nombre+".html")

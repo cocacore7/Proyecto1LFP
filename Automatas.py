@@ -1,3 +1,7 @@
+import Reporte
+import Select
+
+
 def inicio(cadena):
     estado = 0
     palabra = ""
@@ -301,7 +305,7 @@ def estructuraload(data):
             return estructura
 
 
-def usesetD(cadena, identificadorNombre, identificadorDato, tokens):
+def usesetD(cadena, identificadorNombre, identificadorDato, tokens, memoriaActual):
     estado = 0
     palabra = ""
     bandera = False
@@ -324,6 +328,7 @@ def usesetD(cadena, identificadorNombre, identificadorDato, tokens):
             posicion = i
     if bandera:
         if len(identificadorDato[posicion]) != 0:
+            memoriaActual = identificadorDato[posicion]
             return identificadorDato[posicion]
         else:
             print("Identificador vacío, usar comando load into...")
@@ -333,7 +338,7 @@ def usesetD(cadena, identificadorNombre, identificadorDato, tokens):
         return ""
 
 
-def usesetE(cadena, identificadorNombre, identificadorEstruc):
+def usesetE(cadena, identificadorNombre, identificadorEstruc, estrucActual):
     estado = 0
     palabra = ""
     bandera = False
@@ -354,6 +359,7 @@ def usesetE(cadena, identificadorNombre, identificadorEstruc):
             posicion = i
     if bandera:
         if len(identificadorEstruc[posicion]) != 0:
+            estrucActual = identificadorEstruc[posicion]
             return identificadorEstruc[posicion]
 
 
@@ -781,6 +787,110 @@ def minimo(cadena, memoriaActual, estrucActual, tokens):
             print(reemplazo[i] + ": " + str(mayor) + " (Tipo: Numerico)")
 
 
+def siql(cadena, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual, estrucActual, tokens):
+    estado = 0
+    palabra = ""
+    archivos = []
+    for i in cadena:
+        if estado == 0:
+            if palabra == "script":
+                tokens.append("tk: SCRIPT (Palabra Reservada)")
+                palabra = ""
+                estado = 1
+            elif i != " ":
+                palabra = palabra + i.lower()
+        elif estado == 1:
+            if i != " " or i != ",":
+                palabra = palabra + i
+            elif i == " " or palabra == ",":
+                if i == ",":
+                    tokens.append("tk: " + palabra + " (Archivo)")
+                    tokens.append("tk: ',' (Separador)")
+                archivos.append(palabra)
+                palabra = ""
+    archivos.append(palabra)
+    tokens.append("tk: " + palabra + " (Archivo)")
+    archivos2 = []
+    palabra = ""
+    for u in archivos:
+        comandos = []
+        try:
+            with open(u, 'r') as arch:
+                data = arch.read()
+                arch.close()
+                for i in data:
+                    if i == ";" or i == "\n" or i == "":
+                        comandos.append(palabra)
+                        palabra = ""
+                    else:
+                        palabra = palabra + i
+            if comandos is not None:
+                archivos2.append(comandos)
+        except(OSError, IOError):
+            print("Estructura no definida")
+            print("------------------------------------")
+
+    for i in archivos2:
+        for u in i:
+            comando = inicio(u.lower())
+            if comando == "createset":
+                createset(u.lower(), identificadorNombre, identificadorDatos, identificadorEstruc, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "loadinto":
+                loadinto(u.lower(), identificadorNombre, identificadorDatos, identificadorEstruc, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "useset":
+                memoria = usesetD(u.lower(), identificadorNombre, identificadorDatos, tokens, memoriaActual)
+                estructura = usesetE(u.lower(), identificadorNombre, identificadorEstruc, estrucActual)
+                if memoria != "":
+                    memoriaActual = memoria
+                    estrucActual = estructura
+                print("------------------------------------------------------------")
+
+            elif comando == "select":
+                Select.select(u, memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "listattributes":
+                if memoriaActual is not None:
+                    for z in memoriaActual:
+                        print(z)
+                else:
+                    print("No se a cargado ninguna memoria creada, usar comando -use set-")
+                print("------------------------------------------------------------")
+
+            elif comando == "printin":
+                printin(u.lower(), tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "max":
+                maximo(u.lower(), memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "min":
+                minimo(u, memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "sum":
+                sum(u, memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "count":
+                count(u.lower(), memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "reportto":
+                Reporte.reportar(u, memoriaActual, estrucActual, tokens)
+                print("------------------------------------------------------------")
+
+            elif comando == "reporttokens":
+                for z in tokens:
+                    print(z)
+                print("------------------------------------------------------------")
+
+
 def numero(cadena):
     bandera = False
     estado = 0
@@ -806,3 +916,39 @@ def numero(cadena):
                 bandera = False
             return bandera
     return bandera
+
+
+def createset(cadena, identificadorNombre, identificadorDato, identificadorEstruc, tokens):
+    comando = ""
+    palabra = ""
+    auxiliar = []
+    inicial = ""
+    for i in cadena:
+        if i != " " and comando != "createset":
+            if i == "c" or i == "r" or i == "e" or i == "a" or i == "t" or i == "s":
+                comando = comando + i
+        else:
+            if i != " " or i == "_" or i == "a" or i == "b" or i == "c" or i == "d" or i == "e" or i == "f" \
+                    or i == "g" or i == "h" or i == "i" or i == "j" or i == "k" or i == "l" or i == "m" or i == "n" \
+                    or i == "ñ" or i == "o" or i == "p" or i == "q" or i == "r" or i == "s" or i == "t" or i == "u" \
+                    or i == "v" or i == "w" or i == "x" or i == "y" or i == "z" or i == "0" or i == "1" or i == "2" \
+                    or i == "3" or i == "4" or i == "5" or i == "6" or i == "7" or i == "8" or i == "9":
+                if inicial == "":
+                    palabra = palabra + i
+                    inicial = i
+                else:
+                    palabra = palabra + i
+    if inicial == "_" or inicial == "a" or inicial == "b" or inicial == "c" or inicial == "d" or \
+            inicial == "e" or inicial == "f" or inicial == "g" or inicial == "h" or inicial == "i" or \
+            inicial == "j" or inicial == "k" or inicial == "l" or inicial == "m" or inicial == "n" or \
+            inicial == "ñ" or inicial == "o" or inicial == "p" or inicial == "q" or inicial == "r" or \
+            inicial == "s" or inicial == "t" or inicial == "u" or inicial == "v" or inicial == "w" or \
+            inicial == "x" or inicial == "y" or inicial == "z":
+        identificadorNombre.append(palabra)
+        identificadorDato.append(auxiliar)
+        identificadorEstruc.append(auxiliar)
+        tokens.append("tk: CREATE SET (Palabra Reservada)")
+        tokens.append("tk: " + palabra + " (Identificador)")
+    else:
+        print("Identificador Invalido")
+        print("------------------------------------")

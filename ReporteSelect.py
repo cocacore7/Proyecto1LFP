@@ -1,3 +1,8 @@
+import ReporteLogicoI
+import ReporteLogicoO
+import ReporteLogicoX
+
+
 def select(cadena, memoriaActual, estrucActual, tokens):
     estado = 0
     signo = 1
@@ -136,14 +141,14 @@ def select(cadena, memoriaActual, estrucActual, tokens):
     if auxiliar[0] == "*":
         if bandera:
             if logicoI:
-                # LogicoI.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
-                print("")
+                final = ReporteLogicoI.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                return final
             elif logicoO:
-                # LogicoO.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
-                print("")
+                final = ReporteLogicoO.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                return final
             elif logicoX:
-                # LogicoX.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
-                print("")
+                final = ReporteLogicoX.logico(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual)
+                return final
             else:
                 if signo1 == "=":
                     contador = 0
@@ -415,14 +420,14 @@ def select(cadena, memoriaActual, estrucActual, tokens):
     else:
         if bandera:
             if logicoI:
-                # LogicoI.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
-                print("")
+                final = ReporteLogicoI.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                return final
             elif logicoO:
-                # LogicoO.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
-                print("")
+                final = ReporteLogicoO.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                return final
             elif logicoX:
-                # LogicoX.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
-                print("")
+                final = ReporteLogicoX.logico2(signo1, signo2, comparar1, comparar2, condicion1, condicion2, memoriaActual, estrucActual, auxiliar)
+                return final
             elif signo1 == "=":
                 contador = 0
                 for i in range(0, len(memoriaActual)):

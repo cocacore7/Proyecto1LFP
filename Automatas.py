@@ -1,3 +1,4 @@
+import MenuPrincipal
 import Reporte
 import Select
 
@@ -305,7 +306,7 @@ def estructuraload(data):
             return estructura
 
 
-def usesetD(cadena, identificadorNombre, identificadorDato, tokens, memoriaActual):
+def usesetD(cadena, identificadorNombre, identificadorDato, tokens):
     estado = 0
     palabra = ""
     bandera = False
@@ -328,7 +329,6 @@ def usesetD(cadena, identificadorNombre, identificadorDato, tokens, memoriaActua
             posicion = i
     if bandera:
         if len(identificadorDato[posicion]) != 0:
-            memoriaActual = identificadorDato[posicion]
             return identificadorDato[posicion]
         else:
             print("Identificador vacío, usar comando load into...")
@@ -338,7 +338,7 @@ def usesetD(cadena, identificadorNombre, identificadorDato, tokens, memoriaActua
         return ""
 
 
-def usesetE(cadena, identificadorNombre, identificadorEstruc, estrucActual):
+def usesetE(cadena, identificadorNombre, identificadorEstruc):
     estado = 0
     palabra = ""
     bandera = False
@@ -359,7 +359,6 @@ def usesetE(cadena, identificadorNombre, identificadorEstruc, estrucActual):
             posicion = i
     if bandera:
         if len(identificadorEstruc[posicion]) != 0:
-            estrucActual = identificadorEstruc[posicion]
             return identificadorEstruc[posicion]
 
 
@@ -842,8 +841,8 @@ def siql(cadena, identificadorNombre, identificadorDatos, identificadorEstruc, m
                 print("------------------------------------------------------------")
 
             elif comando == "useset":
-                memoria = usesetD(u.lower(), identificadorNombre, identificadorDatos, tokens, memoriaActual)
-                estructura = usesetE(u.lower(), identificadorNombre, identificadorEstruc, estrucActual)
+                memoria = usesetD(u.lower(), identificadorNombre, identificadorDatos, tokens)
+                estructura = usesetE(u.lower(), identificadorNombre, identificadorEstruc)
                 if memoria != "":
                     memoriaActual = memoria
                     estrucActual = estructura
@@ -889,6 +888,8 @@ def siql(cadena, identificadorNombre, identificadorDatos, identificadorEstruc, m
                 for z in tokens:
                     print(z)
                 print("------------------------------------------------------------")
+    MenuPrincipal.cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
+                         estrucActual, tokens)
 
 
 def numero(cadena):

@@ -26,8 +26,8 @@ def cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoria
                estrucActual, tokens)
 
     elif comando == "useset":
-        memoria2 = Automatas.usesetD(aux, identificadorNombre, identificadorDatos, tokens, memoriaActual)
-        estructura = Automatas.usesetE(aux, identificadorNombre, identificadorEstruc, estrucActual)
+        memoria2 = Automatas.usesetD(aux, identificadorNombre, identificadorDatos, tokens)
+        estructura = Automatas.usesetE(aux, identificadorNombre, identificadorEstruc)
         if memoria2 != "":
             memoriaActual = memoria2
             estrucActual = estructura
@@ -81,8 +81,6 @@ def cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoria
     elif comando == "script":
         Automatas.siql(entrada, identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
                        estrucActual, tokens)
-        cargaA(identificadorNombre, identificadorDatos, identificadorEstruc, memoriaActual,
-               estrucActual, tokens)
 
     elif comando == "reporttokens":
         for i in tokens:
